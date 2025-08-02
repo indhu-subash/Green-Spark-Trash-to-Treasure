@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>T to T:From trash to treasure – Biodegradable or Not?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      background-color: #fffef5;
+      color: #2e7d32;
+    }
+
+    h1 {
+      color: #1b5e20;
+    }
+
+    .waste-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .item {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      transition: 0.3s ease;
+    }
+
+    .item:hover {
+      transform: scale(1.02);
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background-color: #43a047;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2e7d32;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      background: #ffffffdd;
+      padding: 10px;
+      border-left: 5px solid #66bb6a;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>🌱 T to T:From trash to treasure</h1>
+  <p>Select an item to check if it's biodegradable or not, and get composting advice! ♻</p>
+
+  <div class="waste-list">
+    <div class="item">
+      <h3>Vegetable Scraps</h3>
+      <button onclick="checkWaste('Vegetable Scraps')">Check</button>
+      <div class="result" id="result-vegetablescraps"></div>
+    </div>
+    <div class="item">
+      <h3>Juice Bottle</h3>
+      <button onclick="checkWaste('Juice Bottle')">Check</button>
+      <div class="result" id="result-juicebottle"></div>
+    </div>
+    <div class="item">
+      <h3>Bread Crust</h3>
+      <button onclick="checkWaste('Bread Crust')">Check</button>
+      <div class="result" id="result-breadcrust"></div>
+    </div>
+    <div class="item">
+      <h3>Onion Skins</h3>
+      <button onclick="checkWaste('Onion Skins')">Check</button>
+      <div class="result" id="result-onionskins"></div>
+    </div>
+    <div class="item">
+      <h3>Glass Bottle</h3>
+      <button onclick="checkWaste('Glass Bottle')">Check</button>
+      <div class="result" id="result-glassbottle"></div>
+    </div>
+  </div>
+
+  <script>
+    const wasteInfo = {
+      "Vegetable Scraps": {
+        type: "Biodegradable",
+        tip: "Great for composting, rich in nutrients."
+      },
+      "Juice Bottle": {
+        type: "Non-Biodegradable",
+        tip: "Rinse and recycle if available. Not suitable for compost."
+      },
+      "Bread Crust": {
+        type: "Biodegradable",
+        tip: "Can be composted, but avoid in large quantities to prevent pests."
+      },
+      "Onion Skins": {
+        type: "Biodegradable",
+        tip: "Adds nutrients to compost. Shred for faster decomposition."
+      },
+      "Glass Bottle": {
+        type: "Non-Biodegradable",
+        tip: "Clean and recycle. Never put in compost."
+      }
+    };
+
+    function checkWaste(item) {
+      const result = wasteInfo[item];
+      const elementId = result-${item.toLowerCase().replace(/\s/g, '')};
+      document.getElementById(elementId).innerHTML = `
+        🌍 <strong>Type:</strong> ${result.type}<br>
+        💡 <strong>Tip:</strong> ${result.tip}
+      `;
+    }
+  </script>
+</body>
+</html>
